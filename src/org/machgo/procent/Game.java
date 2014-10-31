@@ -15,13 +15,16 @@ public class Game extends JPanel implements Runnable, KeyListener
     private ArrayList<Enemy> _enemies;
     private ArrayList<Bullet> _bullets;
     private boolean _isRunning;
-    private int _fps = 30;
+    private int _fps = 60;
+    private int _points;
 
     public Game()
     {
         _player = new Player(400, 300, 20, 20);
         _bullets = new ArrayList<Bullet>();
         _enemies = new ArrayList<Enemy>();
+
+        _points = 0;
 
         //TEST ENEMIES
         for (int i = 10; i < 800; i = i + 40)
@@ -73,7 +76,10 @@ public class Game extends JPanel implements Runnable, KeyListener
             for (Enemy enemy : _enemies)
             {
                 if (bullet.colidesWith(enemy))
+                {
                     enemy.die();
+                    _points = _points + 100;
+                }
             }
         }
         for (Enemy enemy : _enemies)
@@ -101,7 +107,7 @@ public class Game extends JPanel implements Runnable, KeyListener
         for (Bullet bullet : _bullets)
         {
             Rectangle bRect = bullet.getRectangle();
-            g2d.drawOval((int) bRect.getX(), (int) bRect.getY(), (int) bRect.getWidth(), (int) bRect.getHeight());
+            g2d.fillOval((int) bRect.getX(), (int) bRect.getY(), (int) bRect.getWidth(), (int) bRect.getHeight());
         }
 
         for (Enemy enemy : _enemies)
@@ -110,8 +116,13 @@ public class Game extends JPanel implements Runnable, KeyListener
             {
                 Rectangle eRect = enemy.getRectangle();
                 g2d.fillRect((int) eRect.getX(), (int) eRect.getY(), (int) eRect.getWidth(), (int) eRect.getHeight());
+                enemy.drawHealthbar(g2d);
             }
         }
+
+        Font font = new Font("Serif", Font.PLAIN, 96);
+        g2d.setFont(font);
+        g2d.drawString(Integer.toString(_points), 100, 100);
     }
 
     @Override

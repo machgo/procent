@@ -1,5 +1,7 @@
 package org.machgo.procent;
 
+import java.awt.*;
+
 /**
  * Created by marco on 31/10/14.
  */
@@ -34,6 +36,15 @@ public class Enemy extends MoveableSprite
     public void lowerHealth(int health)
     {
         _health = _health - health;
+    }
+
+    public void drawHealthbar(Graphics2D g2d)
+    {
+        int xRect = _x-20;
+        int yRect = _y-15;
+        int healthPixel = 25;
+        g2d.drawRect(_x-20, _y-15, 40, 5);
+        g2d.fillRect(xRect,yRect, healthPixel, 5);
     }
 
     //Simple AI, go to player :)
