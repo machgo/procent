@@ -31,15 +31,19 @@ public class MoveableSprite
 
     public boolean colidesWith(MoveableSprite sprite)
     {
-        //TODO: implements Coliding
+        if (this.getRectangle().intersects(sprite.getRectangle()))
+        {
+            return true;
+        }
+
         return false;
     }
 
     public Rectangle getRectangle()
     {
         Rectangle ret = new Rectangle();
-        ret.x = _x-(_width-2);
-        ret.y = _y-(_height/2);
+        ret.x = _x - (_width - 2);
+        ret.y = _y - (_height / 2);
         ret.height = _height;
         ret.width = _width;
 
@@ -49,49 +53,57 @@ public class MoveableSprite
     public void move(Direction dir)
     {
         _orientation = dir;
-        switch (dir) {
+        switch (dir)
+        {
             case LEFT:
-                _x = _x-_speed;
+                _x = _x - _speed;
                 break;
             case RIGHT:
-                _x = _x+_speed;
+                _x = _x + _speed;
                 break;
             case UP:
-                _y = _y-_speed;
+                _y = _y - _speed;
                 break;
             case DOWN:
-                _y = _y+_speed;
+                _y = _y + _speed;
                 break;
             default:
                 break;
         }
     }
 
-    public int get_x() {
+    public int get_x()
+    {
         return _x;
     }
 
-    public void set_x(int _x) {
+    public void set_x(int _x)
+    {
         this._x = _x;
     }
 
-    public int get_y() {
+    public int get_y()
+    {
         return _y;
     }
 
-    public void set_y(int _y) {
+    public void set_y(int _y)
+    {
         this._y = _y;
     }
 
-    public Image get_image() {
+    public Image get_image()
+    {
         return _image;
     }
 
-    public void set_image(Image _image) {
+    public void set_image(Image _image)
+    {
         this._image = _image;
     }
 
-    public void set_image(String filepath) throws IOException {
+    public void set_image(String filepath) throws IOException
+    {
         File img = new File("SomeImage");
         _image = ImageIO.read(img);
     }

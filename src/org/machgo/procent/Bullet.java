@@ -11,29 +11,30 @@ public class Bullet extends MoveableSprite
     {
         super(x, y, height, width);
         _movement = Direction.DOWN;
-        this._speed = 10;
+        this._speed = 30;
     }
 
 
-    public void setMovement (Direction dir)
+    public void setMovement(Direction dir)
     {
         _movement = dir;
     }
 
-    public void move ()
+    public void move()
     {
-        switch (_movement) {
+        switch (_movement)
+        {
             case LEFT:
-                _x = _x-_speed;
+                _x = _x - _speed;
                 break;
             case RIGHT:
-                _x = _x+_speed;
+                _x = _x + _speed;
                 break;
             case UP:
-                _y = _y-_speed;
+                _y = _y - _speed;
                 break;
             case DOWN:
-                _y = _y+_speed;
+                _y = _y + _speed;
                 break;
             default:
                 break;

@@ -11,7 +11,7 @@ public class Main
         Game game = new Game();
         frame.add(game);
         frame.addKeyListener(game);
-        frame.setSize(800,600);
+        frame.setSize(800, 600);
         frame.setVisible(true);
 
         game.run();

@@ -3,9 +3,58 @@ package org.machgo.procent;
 /**
  * Created by marco on 31/10/14.
  */
-public class Enemy extends MoveableSprite {
+public class Enemy extends MoveableSprite
+{
 
-    public Enemy(int x, int y, int height, int width) {
+    private int _health;
+
+    public Enemy(int x, int y, int height, int width)
+    {
         super(x, y, height, width);
+        this._speed = 1;
+    }
+
+    public void setHealth(int health)
+    {
+        _health = health;
+    }
+
+    public void die()
+    {
+        _health = 0;
+    }
+
+    public boolean isAlive()
+    {
+        if (_health > 0)
+            return true;
+        return false;
+    }
+
+    public void lowerHealth(int health)
+    {
+        _health = _health - health;
+    }
+
+    //Simple AI, go to player :)
+    public void moveToPlayer(Player player)
+    {
+        int xDistance = player.get_x() - this.get_x();
+        int yDistance = player.get_y() - this.get_y();
+
+        if (Math.abs(xDistance) > Math.abs(yDistance))
+        {
+            if (xDistance < 0)
+                move(Direction.LEFT);
+            else
+                move(Direction.RIGHT);
+        }
+        else
+        {
+            if (yDistance < 0)
+                move(Direction.UP);
+            else
+                move(Direction.DOWN);
+        }
     }
 }

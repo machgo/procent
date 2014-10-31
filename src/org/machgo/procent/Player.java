@@ -5,16 +5,16 @@ package org.machgo.procent;
  */
 public class Player extends MoveableSprite
 {
-    public Player(int x, int y, int height, int width) {
+    public Player(int x, int y, int height, int width)
+    {
         super(x, y, height, width);
     }
 
     public Bullet shoot()
     {
-        Bullet ret = new Bullet(_x, _y, _height, _width);
+        Bullet ret = new Bullet(_x, _y, 10, 10);
         ret.setMovement(_orientation);
 
         return ret;
     }
-
 }
