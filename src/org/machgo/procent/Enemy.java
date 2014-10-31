@@ -68,4 +68,13 @@ public class Enemy extends MoveableSprite
                 move(Direction.DOWN);
         }
     }
+
+    @Override
+    public void draw(Graphics2D g2d)
+    {
+        super.draw(g2d);
+        Rectangle eRect = this.getRectangle();
+        g2d.fillRect((int) eRect.getX(), (int) eRect.getY(), (int) eRect.getWidth(), (int) eRect.getHeight());
+        this.drawHealthbar(g2d);
+    }
 }
