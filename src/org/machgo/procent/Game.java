@@ -64,6 +64,7 @@ public class Game extends JPanel implements Runnable, KeyListener
 
     private void draw()
     {
+        revalidate();
         repaint();
     }
 
@@ -99,6 +100,7 @@ public class Game extends JPanel implements Runnable, KeyListener
     @Override
     public void paint(Graphics g)
     {
+        super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
 
         Rectangle playerRect = _player.getRectangle();
