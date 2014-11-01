@@ -1,10 +1,9 @@
 package org.machgo.procent;
 
 import javax.imageio.ImageIO;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 
 /**
  * Created by marco on 31/10/14.
@@ -15,7 +14,7 @@ public class MoveableSprite
     protected int _y;
     protected int _height;
     protected int _width;
-    private Image _image;
+    private BufferedImage _image;
     protected int _speed;
     protected Direction _orientation;
 
@@ -48,6 +47,12 @@ public class MoveableSprite
         ret.width = _width;
 
         return ret;
+    }
+
+    public void draw (Graphics2D g2d)
+    {
+
+
     }
 
     public void move(Direction dir)
@@ -92,19 +97,27 @@ public class MoveableSprite
         this._y = _y;
     }
 
-    public Image get_image()
+    public BufferedImage get_image()
     {
         return _image;
     }
 
-    public void set_image(Image _image)
+    public void set_image(BufferedImage _image)
     {
         this._image = _image;
     }
 
-    public void set_image(String filepath) throws IOException
+    public void set_image(String filepath)
     {
-        File img = new File("SomeImage");
-        _image = ImageIO.read(img);
+        File img = new File(filepath);
+        try
+        {
+            _image = ImageIO.read(img);
+
+        }
+        catch (Exception ex)
+        {
+
+        }
     }
 }

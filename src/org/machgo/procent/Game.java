@@ -20,7 +20,8 @@ public class Game extends JPanel implements Runnable, KeyListener
 
     public Game()
     {
-        _player = new Player(400, 300, 20, 20);
+        _player = new Player(400, 300, 32, 32);
+        _player.set_image("assets/player.png");
         _bullets = new ArrayList<Bullet>();
         _enemies = new ArrayList<Enemy>();
 
@@ -68,6 +69,7 @@ public class Game extends JPanel implements Runnable, KeyListener
 
     private void draw()
     {
+        revalidate();
         repaint();
     }
 
@@ -103,24 +105,21 @@ public class Game extends JPanel implements Runnable, KeyListener
     @Override
     public void paint(Graphics g)
     {
+        super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
 
-        Rectangle playerRect = _player.getRectangle();
-        g2d.drawRect((int) playerRect.getX(), (int) playerRect.getY(), (int) playerRect.getWidth(), (int) playerRect.getHeight());
+        _player.draw(g2d);
 
         for (Bullet bullet : _bullets)
         {
-            Rectangle bRect = bullet.getRectangle();
-            g2d.fillOval((int) bRect.getX(), (int) bRect.getY(), (int) bRect.getWidth(), (int) bRect.getHeight());
+            bullet.draw(g2d);
         }
 
         for (Enemy enemy : _enemies)
         {
             if (enemy.isAlive())
             {
-                Rectangle eRect = enemy.getRectangle();
-                g2d.fillRect((int) eRect.getX(), (int) eRect.getY(), (int) eRect.getWidth(), (int) eRect.getHeight());
-                enemy.drawHealthbar(g2d);
+                enemy.draw(g2d);
             }
         }
 
