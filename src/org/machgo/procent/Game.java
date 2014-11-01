@@ -27,12 +27,16 @@ public class Game extends JPanel implements Runnable, KeyListener
         _points = 0;
 
         //TEST ENEMIES
-        for (int i = 10; i < 800; i = i + 40)
-        {
-            Enemy e1 = new Enemy(i, 50, 20, 20);
-            e1.setHealth(100);
-            _enemies.add(e1);
-        }
+//        for (int i = 10; i < 800; i = i + 40)
+//        {
+//            Enemy e1 = new Enemy(i, 50, 20, 20);
+//            e1.setHealth(100);
+//            _enemies.add(e1);
+//        }
+
+        Enemy e1 = new Enemy(50, 50, 20, 20);
+        e1.setHealth(100);
+        _enemies.add(e1);
 
         addKeyListener(this);
         _isRunning = true;
@@ -77,7 +81,7 @@ public class Game extends JPanel implements Runnable, KeyListener
             {
                 if (bullet.colidesWith(enemy))
                 {
-                    enemy.die();
+                    enemy.lowerHealth(20);
                     _points = _points + 100;
                 }
             }

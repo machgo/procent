@@ -7,7 +7,7 @@ import java.awt.*;
  */
 public class Enemy extends MoveableSprite
 {
-
+    private int _maxHealth;
     private int _health;
 
     public Enemy(int x, int y, int height, int width)
@@ -19,6 +19,7 @@ public class Enemy extends MoveableSprite
     public void setHealth(int health)
     {
         _health = health;
+        _maxHealth = health;
     }
 
     public void die()
@@ -40,11 +41,14 @@ public class Enemy extends MoveableSprite
 
     public void drawHealthbar(Graphics2D g2d)
     {
+        int barLength = 40;
+        int barHealthLength = barLength * (_health/_maxHealth);
+
+
         int xRect = _x-20;
-        int yRect = _y-15;
-        int healthPixel = 25;
-        g2d.drawRect(_x-20, _y-15, 40, 5);
-        g2d.fillRect(xRect,yRect, healthPixel, 5);
+        int yRect = _y-20;
+        g2d.drawRect(xRect, yRect, barLength, 5);
+        g2d.fillRect(xRect,yRect, barHealthLength, 5);
     }
 
     //Simple AI, go to player :)
