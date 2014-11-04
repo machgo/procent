@@ -81,7 +81,7 @@ public class Game extends JPanel implements Runnable, KeyListener
 
             for (Enemy enemy : _enemies)
             {
-                if (bullet.colidesWith(enemy))
+                if (bullet.colidesWith(enemy) && enemy.isAlive())
                 {
                     enemy.lowerHealth(20);
                     _points = _points + 100;

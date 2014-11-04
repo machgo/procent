@@ -42,7 +42,7 @@ public class Enemy extends MoveableSprite
     public void drawHealthbar(Graphics2D g2d)
     {
         int barLength = 40;
-        int barHealthLength = barLength * (_health/_maxHealth);
+        int barHealthLength = (int)(barLength * ((float)_health/(float)_maxHealth));
 
 
         int xRect = _x-20;
