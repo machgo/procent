@@ -38,16 +38,27 @@ public class MoveableSprite
         return false;
     }
 
+    public boolean colidesWith(Rectangle rect)
+    {
+        if (this.getRectangle().intersects(rect))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     public Rectangle getRectangle()
     {
         Rectangle ret = new Rectangle();
-        ret.x = _x - (_width - 2);
+        ret.x = _x - (_width / 2);
         ret.y = _y - (_height / 2);
         ret.height = _height;
         ret.width = _width;
 
         return ret;
     }
+
 
     public void draw (Graphics2D g2d)
     {
@@ -75,6 +86,40 @@ public class MoveableSprite
             default:
                 break;
         }
+    }
+
+    public Rectangle nextMove(Direction dir)
+    {
+        _orientation = dir;
+        Point pos = new Point();
+        pos.x = _x;
+        pos.y = _y;
+
+        switch (dir)
+        {
+            case LEFT:
+                pos.x = _x - _speed;
+                break;
+            case RIGHT:
+                pos.x = _x + _speed;
+                break;
+            case UP:
+                pos.y = _y - _speed;
+                break;
+            case DOWN:
+                pos.y = _y + _speed;
+                break;
+            default:
+                break;
+        }
+
+        Rectangle ret = new Rectangle();
+        ret.x = pos.x - (_width / 2);
+        ret.y = pos.y - (_height / 2);
+        ret.height = _height;
+        ret.width = _width;
+
+        return ret;
     }
 
     public int get_x()
@@ -113,7 +158,6 @@ public class MoveableSprite
         try
         {
             _image = ImageIO.read(img);
-
         }
         catch (Exception ex)
         {

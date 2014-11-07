@@ -15,7 +15,7 @@ public class Bullet extends MoveableSprite
     {
         super(x, y, height, width);
         _movement = Direction.DOWN;
-        this._speed = 30;
+        this._speed = 10;
     }
 
 

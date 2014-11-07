@@ -73,6 +73,35 @@ public class Enemy extends MoveableSprite
         }
     }
 
+    public Rectangle nextMoveToPlayer(Player player)
+    {
+        return this.nextMove(directionToPlayer(player));
+    }
+
+    private Direction directionToPlayer(Player player)
+    {
+        Direction ret;
+        int xDistance = player.get_x() - this.get_x();
+        int yDistance = player.get_y() - this.get_y();
+
+        if (Math.abs(xDistance) > Math.abs(yDistance))
+        {
+            if (xDistance < 0)
+                ret = Direction.LEFT;
+            else
+                ret = Direction.RIGHT;
+        }
+        else
+        {
+            if (yDistance < 0)
+                ret = Direction.UP;
+            else
+                ret = Direction.DOWN;
+        }
+
+        return ret;
+    }
+
     @Override
     public void draw(Graphics2D g2d)
     {
