@@ -96,9 +96,16 @@ public class Player extends MoveableSprite
             _hitCooldown--;
         else
         {
-            _hitCooldown = 30;
+            _hitCooldown = 60;
             _health -= healthLost;
         }
+    }
+
+    public Boolean isOnHitCooldown()
+    {
+        if (_hitCooldown > 0)
+            return true;
+        return false;
     }
 
     public boolean isAlive()

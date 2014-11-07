@@ -45,6 +45,11 @@ public class Bullet extends MoveableSprite
         }
     }
 
+    public Rectangle nextMove()
+    {
+        return this.nextMove(this._movement);
+    }
+
     @Override
     public void draw(Graphics2D g2d)
     {

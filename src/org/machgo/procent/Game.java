@@ -121,7 +121,18 @@ public class Game extends JPanel implements Runnable, KeyListener
 
         for (Bullet bullet : _bullets)
         {
-            bullet.move();
+            boolean bulletColides = false;
+            Rectangle nextBulletPosition = bullet.nextMove();
+
+            for (Wall wall : _walls)
+            {
+                if (wall.colidesWith(nextBulletPosition))
+                    bulletColides = true;
+            }
+
+            if (!bulletColides)
+                bullet.move();
+
 
             for (Enemy enemy : _enemies)
             {
@@ -154,7 +165,14 @@ public class Game extends JPanel implements Runnable, KeyListener
         {
             boolean enemyColides = false;
             Rectangle nextEnemyPos = enemy.nextMoveToPlayer(_player);
-            if (enemy.isAlive())
+            for (Wall wall : _walls)
+            {
+                if (wall.colidesWith(nextEnemyPos))
+                    enemyColides = true;
+            }
+
+
+            if (enemy.isAlive() && !enemyColides)
             {
                 //TODO: collide to wall
                 noEnemies = false;
@@ -223,12 +241,19 @@ public class Game extends JPanel implements Runnable, KeyListener
 
     private void drawHUD(Graphics2D g2d)
     {
+
         Font font = new Font("Serif", Font.PLAIN, 30);
+        g2d.setColor(Color.BLACK);
         g2d.setFont(font);
 
         g2d.drawString(Integer.toString(_dollars) + "$", this.getWidth()-100, 30);
 
-        g2d.setColor(Color.RED);
+
+        if (_player.isOnHitCooldown())
+            g2d.setColor(Color.YELLOW);
+        else
+            g2d.setColor(Color.RED);
+
         for (int i = 0; i < _player.getMaxHealth(); i++)
         {
             g2d.drawOval(30*i+10, 10, 20, 20);
