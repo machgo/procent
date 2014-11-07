@@ -127,7 +127,10 @@ public class Game extends JPanel implements Runnable, KeyListener
             for (Wall wall : _walls)
             {
                 if (wall.colidesWith(nextBulletPosition))
+                {
                     bulletColides = true;
+                    bullet.explode();
+                }
             }
 
             if (!bulletColides)
@@ -136,7 +139,7 @@ public class Game extends JPanel implements Runnable, KeyListener
 
             for (Enemy enemy : _enemies)
             {
-                if (bullet.colidesWith(enemy) && enemy.isAlive())
+                if (bullet.colidesWith(enemy) && enemy.isAlive() && !bullet.isExploded())
                 {
                     enemy.lowerHealth(1);
                     _points = _points + 100;
@@ -170,7 +173,6 @@ public class Game extends JPanel implements Runnable, KeyListener
                 if (wall.colidesWith(nextEnemyPos))
                     enemyColides = true;
             }
-
 
             if (enemy.isAlive() && !enemyColides)
             {
@@ -306,7 +308,10 @@ public class Game extends JPanel implements Runnable, KeyListener
 
             for (Bullet bullet : _bullets)
             {
-                bullet.draw(g2d);
+                if (!bullet.isExploded())
+                {
+                    bullet.draw(g2d);
+                }
             }
 
             for (Enemy enemy : _enemies)

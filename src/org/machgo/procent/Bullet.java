@@ -10,12 +10,14 @@ import java.awt.image.AffineTransformOp;
 public class Bullet extends MoveableSprite
 {
     private Direction _movement;
+    private boolean _exploded;
 
     public Bullet(int x, int y, int height, int width)
     {
         super(x, y, height, width);
         _movement = Direction.DOWN;
         this._speed = 10;
+        this._exploded = false;
     }
 
 
@@ -48,6 +50,16 @@ public class Bullet extends MoveableSprite
     public Rectangle nextMove()
     {
         return this.nextMove(this._movement);
+    }
+
+    public void explode()
+    {
+        this._exploded = true;
+    }
+
+    public boolean isExploded ()
+    {
+        return this._exploded;
     }
 
     @Override
