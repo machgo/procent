@@ -21,13 +21,14 @@ public class Game extends JPanel implements Runnable, KeyListener
     private int _fps = 60;
     private int _points;
     private int _activeRound;
+    private Shop _shop;
 
     private GameState _gameState;
 
     public Game()
     {
 
-        _player = new Player(0,0,0,0);
+        _player = new Player(400, 300, 32, 32);
         _bullets = new ArrayList<Bullet>();
         _enemies = new ArrayList<Enemy>();
         _drops = new ArrayList<ItemDrop>();
@@ -36,6 +37,8 @@ public class Game extends JPanel implements Runnable, KeyListener
         _activeRound = 0;
 
         _gameState = GameState.TITLE_STATE;
+
+        _shop = new Shop(_player);
 
         addKeyListener(this);
         _isRunning = true;
@@ -214,13 +217,16 @@ public class Game extends JPanel implements Runnable, KeyListener
             e1.setHealth(3);
             _enemies.add(e1);
         }
+
         _gameState = GameState.MAINGAME_STATE;
+        _player = _shop.getBoostedPlayer();
 
     }
 
     private void endRound()
     {
         _gameState = GameState.ROUNDSUMMARY_STATE;
+        _shop = new Shop(_player);
     }
 
     private void startGame()
@@ -297,6 +303,8 @@ public class Game extends JPanel implements Runnable, KeyListener
             Font font = new Font("Serif", Font.PLAIN, 40);
             g2d.setFont(font);
             g2d.drawString("End Of Round " + Integer.toString(_activeRound), 100, 100);
+            drawHUD(g2d);
+            _shop.draw(g2d);
         }
 
         else if (_gameState == GameState.MAINGAME_STATE)
@@ -355,6 +363,7 @@ public class Game extends JPanel implements Runnable, KeyListener
         else if (_gameState == GameState.ROUNDSUMMARY_STATE)
         {
             if (key == KeyEvent.VK_ENTER) startRound();
+            if (key == KeyEvent.VK_0) _shop.BuyItem(0);
         }
 
         else if (_gameState == GameState.GAMEOVER_STATE)
