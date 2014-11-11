@@ -12,8 +12,14 @@ public class Item
 
     }
 
-    public void applyToPlayer (Player player)
+    public Player applyToPlayer (Player player)
     {
+        return player;
+    }
 
+    public int getPrice()
+    {
+        return _price;
     }
 }
+

@@ -8,8 +8,14 @@ import java.util.ArrayList;
 public class Shop
 {
     private ArrayList<Item> _availableItems;
+    private Player _player;
 
-    public Shop()
+    public Shop(Player player)
+    {
+        _player = player;
+    }
+
+    public void BuyItem(int selection)
     {
 
     }

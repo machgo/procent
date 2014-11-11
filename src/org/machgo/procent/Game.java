@@ -20,7 +20,6 @@ public class Game extends JPanel implements Runnable, KeyListener
     private boolean _isRunning;
     private int _fps = 60;
     private int _points;
-    private int _dollars;
     private int _activeRound;
 
     private GameState _gameState;
@@ -34,7 +33,6 @@ public class Game extends JPanel implements Runnable, KeyListener
         _drops = new ArrayList<ItemDrop>();
 
         _points = 0;
-        _dollars = 0;
         _activeRound = 0;
 
         _gameState = GameState.TITLE_STATE;
@@ -158,7 +156,7 @@ public class Game extends JPanel implements Runnable, KeyListener
         {
             if (drop.colidesWith(_player) && !drop.isTaken())
             {
-                _dollars += drop.getDollarValue();
+                _player.addMoney(drop.getDollarValue());
                 drop.setTaken();
             }
         }
@@ -230,7 +228,6 @@ public class Game extends JPanel implements Runnable, KeyListener
         _player = new Player(400, 300, 32, 32);
         _player.set_image("assets/player.png");
         _points = 0;
-        _dollars = 0;
         _activeRound = 0;
 
         startRound();
@@ -248,7 +245,7 @@ public class Game extends JPanel implements Runnable, KeyListener
         g2d.setColor(Color.BLACK);
         g2d.setFont(font);
 
-        g2d.drawString(Integer.toString(_dollars) + "$", this.getWidth()-100, 30);
+        g2d.drawString(Integer.toString(_player.get_money()) + "$", this.getWidth()-100, 30);
 
 
         if (_player.isOnHitCooldown())

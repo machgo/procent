@@ -22,6 +22,8 @@ public class Player extends MoveableSprite
     private int _maxHealth;
     private int _hitCooldown;
 
+    private int _money;
+
     public Player(int x, int y, int height, int width)
     {
         super(x, y, height, width);
@@ -34,6 +36,7 @@ public class Player extends MoveableSprite
         this._sinceLastShoot = this._shootingCooldown; //for instant first shot
         this._movingDirection = Direction.DOWN;
         this._shootingDirection = Direction.DOWN;
+        this._money = 0;
     }
 
     public Bullet shoot()
@@ -122,6 +125,12 @@ public class Player extends MoveableSprite
         return _health;
     }
 
+    public void addHealth(int addedHealth)
+    {
+        if (_health != _maxHealth)
+            _health+=addedHealth;
+    }
+
     public int getMaxHealth()
     {
         return _maxHealth;
@@ -170,5 +179,25 @@ public class Player extends MoveableSprite
             default:
                 break;
         }
+    }
+
+    public int get_money()
+    {
+        return _money;
+    }
+
+    public void set_money(int _money)
+    {
+        this._money = _money;
+    }
+
+    public void addMoney(int amount)
+    {
+        this._money += amount;
+    }
+
+    public void removeMoney(int amount)
+    {
+        this._money -= amount;
     }
 }
