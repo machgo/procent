@@ -83,6 +83,8 @@ public class Player extends MoveableSprite
             this._orientation = this._shootingDirection;
 
         _sinceLastShoot++;
+        if (_hitCooldown > 0)
+            _hitCooldown--;
     }
 
     public Rectangle nextMove()
@@ -92,9 +94,8 @@ public class Player extends MoveableSprite
 
     public void enemyHit(int healthLost)
     {
-        if (_hitCooldown > 0)
-            _hitCooldown--;
-        else
+
+        if (_hitCooldown == 0)
         {
             _hitCooldown = 60;
             _health -= healthLost;
