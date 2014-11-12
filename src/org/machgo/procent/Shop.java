@@ -44,6 +44,13 @@ public class Shop
     {
         g2d.drawString("ITEM SHOP, please buy your stuff now...", 150, 150);
 
+        for (int i = 0; i < _availableItems.size(); i++)
+        {
+            int height = 200+(30*i);
+
+            g2d.drawString(Integer.toString(i) + " ---> HEART", 200, height);
+            g2d.drawString(Integer.toString(_availableItems.get(i).getPrice()) + "$", 600, height);
+        }
 
     }
 }

@@ -5,7 +5,7 @@ package org.machgo.procent;
  */
 public class Item
 {
-    private int _price;
+    protected int _price;
 
     public Item()
     {
