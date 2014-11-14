@@ -3,10 +3,10 @@ package org.machgo.procent;
 /**
  * Created by marco on 14/11/14.
  */
-public class WeaponPistol implements Weapon
+public class WeaponPistol extends Item implements Weapon
 {
     protected int _cooldown;
-    private int _sinceLastShoot;
+    protected int _sinceLastShoot;
 
     public WeaponPistol()
     {
