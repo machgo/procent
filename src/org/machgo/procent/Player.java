@@ -15,6 +15,8 @@ public class Player extends MoveableSprite
     private int _shootingCooldown;
     private int _sinceLastShoot;
 
+    private Weapon _weapon;
+
     private Direction _movingDirection;
     private Direction _shootingDirection;
 
@@ -37,22 +39,20 @@ public class Player extends MoveableSprite
         this._movingDirection = Direction.DOWN;
         this._shootingDirection = Direction.DOWN;
         this._money = 0;
+        this._weapon = new WeaponMG();
     }
 
     public Bullet shoot()
     {
-        Bullet ret = new Bullet(_x, _y, 16, 16);
-        ret.setMovement(_orientation);
-        ret.set_image("assets/bullet.png");
+        Bullet ret = _weapon.Shoot(_x, _y, _shootingDirection);
 
         return ret;
     }
 
     public boolean isShooting()
     {
-        if (_shooting && (_sinceLastShoot >= _shootingCooldown))
+        if (_shooting && _weapon.canShoot())
         {
-            _sinceLastShoot = 0;
             return true;
         }
         return false;
@@ -85,7 +85,7 @@ public class Player extends MoveableSprite
         if (this._shooting)
             this._orientation = this._shootingDirection;
 
-        _sinceLastShoot++;
+        _weapon.update();
         if (_hitCooldown > 0)
             _hitCooldown--;
     }

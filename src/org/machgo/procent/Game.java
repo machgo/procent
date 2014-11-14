@@ -29,7 +29,7 @@ public class Game extends JPanel implements Runnable, KeyListener
     public Game()
     {
 
-        _player = new Player(400, 300, 32, 32);
+        _player = new Player(400, 300, 64, 64);
         _bullets = new ArrayList<Bullet>();
         _enemies = new ArrayList<Enemy>();
         _drops = new ArrayList<ItemDrop>();
@@ -150,7 +150,7 @@ public class Game extends JPanel implements Runnable, KeyListener
 
                     if (!enemy.isAlive())
                     {
-                        _drops.add(new ItemDrop(enemy.get_x(),enemy.get_y(), 30, 30));
+                        _drops.add(new ItemDrop(enemy.get_x(),enemy.get_y(), 64, 64));
                     }
                 }
                 if (enemy.colidesWith(_player) && enemy.isAlive())
@@ -216,7 +216,7 @@ public class Game extends JPanel implements Runnable, KeyListener
 
         for (int i = 50; i < 800; i = i + 80)
         {
-            Enemy e1 = new Enemy(i, 50, 20, 20, _activeRound);
+            Enemy e1 = new Enemy(i, 100, 64, 64, _activeRound);
 
             e1.setHealth(3);
             _enemies.add(e1);
@@ -235,7 +235,7 @@ public class Game extends JPanel implements Runnable, KeyListener
 
     private void startGame()
     {
-        _player = new Player(400, 300, 32, 32);
+        _player = new Player(400, 300, 64, 64);
         _player.set_image("assets/player.png");
         _points = 0;
         _activeRound = 0;
@@ -252,9 +252,8 @@ public class Game extends JPanel implements Runnable, KeyListener
     {
 
         Font font = new Font("Monospaced.plain", Font.PLAIN, 30);
-        g2d.setColor(Color.BLACK);
+        g2d.setColor(Color.WHITE);
         g2d.setFont(font);
-
         g2d.drawString(Integer.toString(_player.get_money()) + "$", this.getWidth()-100, 30);
 
 

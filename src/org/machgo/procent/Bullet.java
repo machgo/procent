@@ -11,6 +11,8 @@ public class Bullet extends MoveableSprite
 {
     private Direction _movement;
     private boolean _exploded;
+    private Point _startingPoint;
+    private int _range;
 
     public Bullet(int x, int y, int height, int width)
     {
@@ -18,6 +20,8 @@ public class Bullet extends MoveableSprite
         _movement = Direction.DOWN;
         this._speed = 10;
         this._exploded = false;
+        _startingPoint = new Point(x,y);
+        _range = 300;
     }
 
 
@@ -45,6 +49,15 @@ public class Bullet extends MoveableSprite
             default:
                 break;
         }
+        checkRange(new Point(_x, _y));
+    }
+
+    private void checkRange(Point positionNow)
+    {
+        if (_startingPoint.x - _range > positionNow.x || _startingPoint.x + _range < positionNow.x)
+            explode();
+        if (_startingPoint.y - _range > positionNow.y || _startingPoint.y + _range < positionNow.y)
+            explode();
     }
 
     public Rectangle nextMove()
