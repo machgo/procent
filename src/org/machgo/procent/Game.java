@@ -180,10 +180,11 @@ public class Game extends JPanel implements Runnable, KeyListener
 
             if (enemy.isAlive() && !enemyColides)
             {
-                //TODO: collide to wall
-                noEnemies = false;
                 enemy.moveToPlayer(_player);
             }
+
+            if (enemy.isAlive())
+                noEnemies = false;
         }
 
         if (noEnemies)
@@ -212,6 +213,8 @@ public class Game extends JPanel implements Runnable, KeyListener
         }
 
         _walls.add(new Wall(340,300,40,40));
+        _walls.add(new Wall(600,300,40,40));
+        _walls.add(new Wall(840,300,40,40));
 
 
         for (int i = 50; i < 800; i = i + 80)
