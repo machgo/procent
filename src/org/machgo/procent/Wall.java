@@ -16,8 +16,9 @@ public class Wall extends MoveableSprite
     public void draw(Graphics2D g2d)
     {
         super.draw(g2d);
-        g2d.setColor(Color.GRAY);
         Rectangle eRect = this.getRectangle();
-        g2d.fillRect((int) eRect.getX(), (int) eRect.getY(), (int) eRect.getWidth(), (int) eRect.getHeight());
+
+        g2d.drawImage(AssetLoader.Wall1Image(), (int) eRect.getX(), (int) eRect.getY(),
+                (int) eRect.getWidth(), (int) eRect.getHeight(), null);
     }
 }

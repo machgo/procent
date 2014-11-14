@@ -17,6 +17,7 @@ public class Game extends JPanel implements Runnable, KeyListener
     private ArrayList<Bullet> _bullets;
     private ArrayList<ItemDrop> _drops;
     private ArrayList<Wall> _walls;
+    private Background _background;
     private boolean _isRunning;
     private int _fps = 60;
     private int _points;
@@ -32,6 +33,7 @@ public class Game extends JPanel implements Runnable, KeyListener
         _bullets = new ArrayList<Bullet>();
         _enemies = new ArrayList<Enemy>();
         _drops = new ArrayList<ItemDrop>();
+        _background = new Background();
 
         _points = 0;
         _activeRound = 0;
@@ -144,6 +146,7 @@ public class Game extends JPanel implements Runnable, KeyListener
                 {
                     enemy.lowerHealth(1);
                     _points = _points + 100;
+                    bullet.explode();
 
                     if (!enemy.isAlive())
                     {
@@ -213,7 +216,8 @@ public class Game extends JPanel implements Runnable, KeyListener
 
         for (int i = 50; i < 800; i = i + 80)
         {
-            Enemy e1 = new Enemy(i, 50, 20, 20);
+            Enemy e1 = new Enemy(i, 50, 20, 20, _activeRound);
+
             e1.setHealth(3);
             _enemies.add(e1);
         }
@@ -247,7 +251,7 @@ public class Game extends JPanel implements Runnable, KeyListener
     private void drawHUD(Graphics2D g2d)
     {
 
-        Font font = new Font("Serif", Font.PLAIN, 30);
+        Font font = new Font("Monospaced.plain", Font.PLAIN, 30);
         g2d.setColor(Color.BLACK);
         g2d.setFont(font);
 
@@ -309,6 +313,7 @@ public class Game extends JPanel implements Runnable, KeyListener
 
         else if (_gameState == GameState.MAINGAME_STATE)
         {
+            _background.draw(g2d);
             _player.draw(g2d);
 
             for (Bullet bullet : _bullets)

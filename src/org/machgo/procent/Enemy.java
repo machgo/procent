@@ -16,6 +16,12 @@ public class Enemy extends MoveableSprite
         this._speed = 1;
     }
 
+    public Enemy(int x, int y, int height, int width, int speed)
+    {
+        super(x, y, height, width);
+        this._speed = speed;
+    }
+
     public void setHealth(int health)
     {
         _health = health;
@@ -107,7 +113,10 @@ public class Enemy extends MoveableSprite
     {
         super.draw(g2d);
         Rectangle eRect = this.getRectangle();
-        g2d.fillRect((int) eRect.getX(), (int) eRect.getY(), (int) eRect.getWidth(), (int) eRect.getHeight());
+
+        g2d.drawImage(AssetLoader.Enemy1Image(), (int) eRect.getX(), (int) eRect.getY(),
+                (int) eRect.getWidth(), (int) eRect.getHeight(), null);
+
         this.drawHealthbar(g2d);
     }
 }

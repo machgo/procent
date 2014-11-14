@@ -22,7 +22,8 @@ public class ItemDrop extends MoveableSprite
     {
         super.draw(g2d);
         Rectangle eRect = this.getRectangle();
-        g2d.fillOval((int) eRect.getX(), (int) eRect.getY(), (int) eRect.getWidth(), (int) eRect.getHeight());
+        g2d.drawImage(AssetLoader.CoinImage(), (int) eRect.getX(), (int) eRect.getY(),
+                (int) eRect.getWidth(), (int) eRect.getHeight(), null);
     }
 
     public void setTaken()
