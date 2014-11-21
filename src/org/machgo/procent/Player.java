@@ -38,8 +38,8 @@ public class Player extends MoveableSprite
         this._sinceLastShoot = this._shootingCooldown; //for instant first shot
         this._movingDirection = Direction.DOWN;
         this._shootingDirection = Direction.DOWN;
-        this._money = 0;
-        this._weapon = new WeaponMG();
+        this._money = 999;
+        this._weapon = new WeaponPistol();
     }
 
     public Bullet shoot()
@@ -200,4 +200,10 @@ public class Player extends MoveableSprite
     {
         this._money -= amount;
     }
+
+    public void set_weapon(Weapon _weapon)
+    {
+        this._weapon = _weapon;
+    }
+
 }

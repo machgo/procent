@@ -217,7 +217,7 @@ public class Game extends JPanel implements Runnable, KeyListener
         _walls.add(new Wall(840,300,40,40));
 
 
-        for (int i = 50; i < 800; i = i + 80)
+        for (int i = 50; i == 50; i = i + 80)
         {
             Enemy e1 = new Enemy(i, 100, 64, 64, _activeRound);
 
@@ -371,6 +371,12 @@ public class Game extends JPanel implements Runnable, KeyListener
         {
             if (key == KeyEvent.VK_ENTER) startRound();
             if (key == KeyEvent.VK_0) _shop.BuyItem(0);
+            if (key == KeyEvent.VK_1) _shop.BuyItem(1);
+            if (key == KeyEvent.VK_2) _shop.BuyItem(2);
+            if (key == KeyEvent.VK_3) _shop.BuyItem(3);
+            if (key == KeyEvent.VK_4) _shop.BuyItem(4);
+            if (key == KeyEvent.VK_5) _shop.BuyItem(5);
+            if (key == KeyEvent.VK_6) _shop.BuyItem(6);
         }
 
         else if (_gameState == GameState.GAMEOVER_STATE)
@@ -407,6 +413,5 @@ public class Game extends JPanel implements Runnable, KeyListener
         if (key == KeyEvent.VK_RIGHT) _player.stopShooting();
         if (key == KeyEvent.VK_UP) _player.stopShooting();
         if (key == KeyEvent.VK_DOWN) _player.stopShooting();
-
     }
 }

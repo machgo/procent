@@ -23,6 +23,11 @@ public class Shop
     private void populateShop(int round)
     {
         _availableItems.add(new Heart());
+
+        if (round > 0)
+        {
+            _availableItems.add(new WeaponMG());
+        }
     }
 
     public Player getBoostedPlayer()
@@ -48,7 +53,7 @@ public class Shop
         {
             int height = 200+(30*i);
 
-            g2d.drawString(Integer.toString(i) + " ---> HEART", 200, height);
+            g2d.drawString(Integer.toString(i) + " ---> " + _availableItems.get(i).getName(), 200, height);
             g2d.drawString(Integer.toString(_availableItems.get(i).getPrice()) + "$", 600, height);
         }
 

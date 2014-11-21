@@ -6,6 +6,7 @@ package org.machgo.procent;
 public class Item
 {
     protected int _price;
+    protected String _name;
 
     public Item()
     {
@@ -21,5 +22,7 @@ public class Item
     {
         return _price;
     }
+
+    public String getName() { return _name; }
 }
 

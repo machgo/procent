@@ -6,6 +6,7 @@ public class Heart extends Item
     {
         super();
         this._price = 50;
+        this._name = "Heart";
     }
 
     @Override

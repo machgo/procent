@@ -12,6 +12,15 @@ public class WeaponPistol extends Item implements Weapon
     {
         this._cooldown = 30;
         this._sinceLastShoot = 30;
+
+    }
+
+    @Override
+    public Player applyToPlayer(Player player)
+    {
+        player = super.applyToPlayer(player);
+        player.set_weapon(this);
+        return player;
     }
 
     @Override
