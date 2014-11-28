@@ -24,13 +24,16 @@ public class Player extends MoveableSprite
     private int _maxHealth;
     private int _hitCooldown;
 
+    private int _maxSpeed;
+
     private int _money;
 
     public Player(int x, int y, int height, int width)
     {
         super(x, y, height, width);
         this._moving = false;
-        this._speed = 10;
+        this._speed = 0;
+        this._maxSpeed = 10;
         this._shootingCooldown = 30;
         this._hitCooldown = 0;
         this._health = 3;
@@ -81,7 +84,18 @@ public class Player extends MoveableSprite
     public void move()
     {
         if (this._moving)
+        {
+            if (this._speed < this._maxSpeed)
+                this._speed++;
+
             super.move(this._movingDirection);
+        }
+        else
+        {
+            if (this._speed > 0)
+                this._speed--;
+        }
+
         if (this._shooting)
             this._orientation = this._shootingDirection;
 
@@ -97,7 +111,6 @@ public class Player extends MoveableSprite
 
     public void enemyHit(int healthLost)
     {
-
         if (_hitCooldown == 0)
         {
             _hitCooldown = 60;
