@@ -212,16 +212,16 @@ public class Game extends JPanel implements Runnable, KeyListener
             _walls.add(new Wall(i+20, this.getHeight()-20, 40, 40));
         }
 
-        _walls.add(new Wall(340,300,40,40));
-        _walls.add(new Wall(600,300,40,40));
-        _walls.add(new Wall(840,300,40,40));
+//        _walls.add(new Wall(340,300,40,40));
+//        _walls.add(new Wall(600,300,40,40));
+//        _walls.add(new Wall(840,300,40,40));
 
 
-        for (int i = 50; i < 800; i = i + 80)
+        for (int i = 600; i < 601; i = i + 80)
         {
-            Enemy e1 = new Enemy(i, 100, 64, 64, _activeRound);
+            Enemy e1 = new Boss(i, 300, 128, 128, _activeRound);
 
-            e1.setHealth(3);
+            e1.setHealth(30);
             _enemies.add(e1);
         }
 

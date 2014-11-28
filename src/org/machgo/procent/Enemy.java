@@ -49,11 +49,11 @@ public class Enemy extends MoveableSprite
     {
         int barLength = 40;
         int barHealthLength = (int)(barLength * ((float)_health/(float)_maxHealth));
-
-
         int xRect = _x-20;
-        int yRect = _y-20;
-        g2d.drawRect(xRect, yRect, barLength, 5);
+        int yRect = _y-(this._height/2)-20;
+        g2d.setColor(Color.WHITE);
+        g2d.fillRect(xRect, yRect, barLength, 5);
+        g2d.setColor(Color.RED);
         g2d.fillRect(xRect,yRect, barHealthLength, 5);
     }
 
