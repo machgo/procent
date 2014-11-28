@@ -217,7 +217,7 @@ public class Game extends JPanel implements Runnable, KeyListener
         _walls.add(new Wall(840,300,40,40));
 
 
-        for (int i = 50; i == 50; i = i + 80)
+        for (int i = 50; i < 800; i = i + 80)
         {
             Enemy e1 = new Enemy(i, 100, 64, 64, _activeRound);
 
