@@ -1,5 +1,7 @@
 package org.machgo.procent;
 
+import java.awt.*;
+
 /**
  * Created by marco on 14/11/14.
  */
@@ -10,5 +12,7 @@ public interface Weapon
     public boolean canShoot();
 
     public void update();
+
+    public void drawItem(Graphics2D g2d, int x, int y);
 
 }

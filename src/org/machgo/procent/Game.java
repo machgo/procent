@@ -259,6 +259,7 @@ public class Game extends JPanel implements Runnable, KeyListener
         g2d.setFont(font);
         g2d.drawString(Integer.toString(_player.get_money()) + "$", this.getWidth()-100, 30);
 
+        _player.get_weapon().drawItem(g2d, this.getWidth()/2, 30);
 
         if (_player.isOnHitCooldown())
             g2d.setColor(Color.YELLOW);

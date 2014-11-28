@@ -214,6 +214,11 @@ public class Player extends MoveableSprite
         this._money -= amount;
     }
 
+    public Weapon get_weapon()
+    {
+        return _weapon;
+    }
+
     public void set_weapon(Weapon _weapon)
     {
         this._weapon = _weapon;

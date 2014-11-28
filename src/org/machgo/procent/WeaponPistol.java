@@ -1,5 +1,7 @@
 package org.machgo.procent;
 
+import java.awt.*;
+
 /**
  * Created by marco on 14/11/14.
  */
@@ -12,6 +14,7 @@ public class WeaponPistol extends Item implements Weapon
     {
         this._cooldown = 30;
         this._sinceLastShoot = 30;
+        this._name = "Pistol";
 
     }
 
@@ -47,5 +50,11 @@ public class WeaponPistol extends Item implements Weapon
     public void update()
     {
         _sinceLastShoot++;
+    }
+
+    @Override
+    public void drawItem(Graphics2D g2d, int x, int y)
+    {
+        g2d.drawString(this._name, x, y);
     }
 }
