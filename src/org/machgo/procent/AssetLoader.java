@@ -21,6 +21,8 @@ public class AssetLoader
     private static BufferedImage _coinImage = null;
     private static BufferedImage _enemy1Image = null;
     private static BufferedImage _enemy2Image = null;
+    private static BufferedImage _explosion1Image = null;
+    private static BufferedImage _explosion2Image = null;
 
     public static BufferedImage PlayerImage()
     {
@@ -84,6 +86,22 @@ public class AssetLoader
             _enemy2Image = AssetLoader.LoadImage("assets/enemy2.png");
 
         return _enemy2Image;
+    }
+
+    public static BufferedImage Explosion1Image()
+    {
+        if (_explosion1Image == null)
+            _explosion1Image = AssetLoader.LoadImage("assets/explosion1.png");
+
+        return _explosion1Image;
+    }
+
+    public static BufferedImage Explosion2Image()
+    {
+        if (_explosion2Image == null)
+            _explosion2Image = AssetLoader.LoadImage("assets/explosion2.png");
+
+        return _explosion2Image;
     }
 
     public static BufferedImage RotateImage(BufferedImage origImage, int rotation, int x, int y)

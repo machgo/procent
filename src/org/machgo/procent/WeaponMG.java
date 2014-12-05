@@ -10,6 +10,5 @@ public class WeaponMG extends WeaponPistol
         this._cooldown = 10;
         this._price = 40;
         this._name = "MachineGun";
-
     }
 }

@@ -15,7 +15,6 @@ public class Shop
     {
         _player = player;
         _availableItems = new ArrayList<Item>();
-
         populateShop(1);
 
     }
@@ -27,6 +26,7 @@ public class Shop
         if (round > 0)
         {
             _availableItems.add(new WeaponMG());
+            _availableItems.add(new WeaponRocket());
         }
     }
 

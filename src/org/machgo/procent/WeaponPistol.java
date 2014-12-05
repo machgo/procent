@@ -15,7 +15,6 @@ public class WeaponPistol extends Item implements Weapon
         this._cooldown = 30;
         this._sinceLastShoot = 30;
         this._name = "Pistol";
-
     }
 
     @Override
@@ -47,6 +46,12 @@ public class WeaponPistol extends Item implements Weapon
     }
 
     @Override
+    public int timeUntilCanShoot()
+    {
+        return _cooldown - _sinceLastShoot;
+    }
+
+    @Override
     public void update()
     {
         _sinceLastShoot++;
@@ -55,6 +60,7 @@ public class WeaponPistol extends Item implements Weapon
     @Override
     public void drawItem(Graphics2D g2d, int x, int y)
     {
+        g2d.drawString(Integer.toString(timeUntilCanShoot()), x-200, y);
         g2d.drawString(this._name, x, y);
     }
 }

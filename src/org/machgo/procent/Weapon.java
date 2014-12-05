@@ -11,6 +11,8 @@ public interface Weapon
 
     public boolean canShoot();
 
+    public int timeUntilCanShoot();
+
     public void update();
 
     public void drawItem(Graphics2D g2d, int x, int y);

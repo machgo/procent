@@ -7,8 +7,10 @@ public class WeaponRocket extends WeaponPistol
 {
     public WeaponRocket()
     {
-        this._cooldown = 10;
+        this._cooldown = 100;
         this._sinceLastShoot = 600;
+        this._price = 100;
+        this._name = "Rocket Launcher";
     }
 
     @Override
@@ -21,4 +23,5 @@ public class WeaponRocket extends WeaponPistol
 
         return ret;
     }
+
 }

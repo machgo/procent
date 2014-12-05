@@ -3,6 +3,7 @@ package org.machgo.procent;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImage;
 
 /**
  * Created by marco on 31/10/14.
@@ -13,6 +14,8 @@ public class Bullet extends MoveableSprite
     private boolean _exploded;
     private Point _startingPoint;
     private int _range;
+    private int _explosionDuration;
+    private boolean _isExploding;
 
     public Bullet(int x, int y, int height, int width)
     {
@@ -22,6 +25,8 @@ public class Bullet extends MoveableSprite
         this._exploded = false;
         _startingPoint = new Point(x,y);
         _range = 300;
+        _explosionDuration = 10;
+        _isExploding = false;
     }
 
 
@@ -62,12 +67,16 @@ public class Bullet extends MoveableSprite
 
     public Rectangle nextMove()
     {
+        if (_isExploding)
+            _explosionDuration--;
+        if (_explosionDuration == 0)
+            _exploded = true;
         return this.nextMove(this._movement);
     }
 
     public void explode()
     {
-        this._exploded = true;
+        this._isExploding = true;
     }
 
     public boolean isExploded ()
@@ -92,6 +101,18 @@ public class Bullet extends MoveableSprite
         AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, (int) bulletRect.getWidth()/2, (int) bulletRect.getWidth()/2);
         AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
 
-        g2d.drawImage(op.filter(this.get_image(), null), (int) bulletRect.getX(), (int) bulletRect.getY(), (int) bulletRect.getWidth(), (int) bulletRect.getHeight(), null);
+        BufferedImage img = this.get_image();
+
+        if (this._isExploding)
+        {
+            if (this._explosionDuration > 5)
+                img = AssetLoader.Explosion1Image();
+            else
+                img = AssetLoader.Explosion2Image();
+        }
+
+
+
+        g2d.drawImage(op.filter(img, null), (int) bulletRect.getX(), (int) bulletRect.getY(), (int) bulletRect.getWidth(), (int) bulletRect.getHeight(), null);
     }
 }
