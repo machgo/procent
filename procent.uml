@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.machgo.procent</OriginalElement>
+  <nodes>
+    <node x="194.25" y="232.0">org.machgo.procent.Item</node>
+    <node x="0.0" y="538.0">org.machgo.procent.Shop</node>
+    <node x="0.0" y="79.0">org.machgo.procent.Enemy</node>
+    <node x="58.75" y="232.0">org.machgo.procent.Weapon</node>
+    <node x="154.0" y="464.0">org.machgo.procent.Background</node>
+    <node x="206.25" y="311.0">org.machgo.procent.Heart</node>
+    <node x="441.25" y="232.0">javax.swing.JPanel</node>
+    <node x="369.0" y="79.0">org.machgo.procent.Player</node>
+    <node x="70.25" y="311.0">org.machgo.procent.WeaponPistol</node>
+    <node x="291.0" y="79.0">org.machgo.procent.Wall</node>
+    <node x="0.0" y="390.0">org.machgo.procent.WeaponRocket</node>
+    <node x="0.0" y="464.0">org.machgo.procent.AssetLoader</node>
+    <node x="6.0" y="158.0">org.machgo.procent.Boss</node>
+    <node x="144.0" y="390.0">org.machgo.procent.WeaponMG</node>
+    <node x="174.0" y="0.0">org.machgo.procent.MoveableSprite</node>
+    <node x="204.0" y="79.0">org.machgo.procent.Bullet</node>
+    <node x="108.0" y="538.0">org.machgo.procent.Main</node>
+    <node x="93.0" y="79.0">org.machgo.procent.ItemDrop</node>
+    <node x="448.0" y="464.0">org.machgo.procent.Direction</node>
+    <node x="317.25" y="232.0">java.awt.event.KeyListener</node>
+    <node x="305.0" y="464.0">org.machgo.procent.GameState</node>
+    <node x="389.0" y="311.0">org.machgo.procent.Game</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.machgo.procent.Player" target="org.machgo.procent.MoveableSprite">
+      <point x="0.0" y="-14.5" />
+      <point x="403.5" y="49.0" />
+      <point x="288.3" y="49.0" />
+      <point x="50.80000000000001" y="14.5" />
+    </edge>
+    <edge source="org.machgo.procent.WeaponPistol" target="org.machgo.procent.Weapon">
+      <point x="-29.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.machgo.procent.Heart" target="org.machgo.procent.Item">
+      <point x="0.0" y="-14.5" />
+      <point x="15.0" y="14.5" />
+    </edge>
+    <edge source="org.machgo.procent.Game" target="javax.swing.JPanel">
+      <point x="16.75" y="-14.5" />
+      <point x="439.25" y="286.0" />
+      <point x="475.75" y="286.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.machgo.procent.WeaponPistol" target="org.machgo.procent.Item">
+      <point x="29.0" y="-14.5" />
+      <point x="157.25" y="286.0" />
+      <point x="209.25" y="286.0" />
+      <point x="-15.0" y="14.5" />
+    </edge>
+    <edge source="org.machgo.procent.Game" target="java.awt.event.KeyListener">
+      <point x="-16.75" y="-14.5" />
+      <point x="405.75" y="286.0" />
+      <point x="369.25" y="286.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.machgo.procent.Enemy" target="org.machgo.procent.MoveableSprite">
+      <point x="0.0" y="-14.5" />
+      <point x="36.5" y="49.0" />
+      <point x="186.7" y="49.0" />
+      <point x="-50.80000000000001" y="14.5" />
+    </edge>
+    <edge source="org.machgo.procent.Boss" target="org.machgo.procent.Enemy">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.machgo.procent.WeaponMG" target="org.machgo.procent.WeaponPistol">
+      <point x="0.0" y="-14.5" />
+      <point x="194.5" y="365.0" />
+      <point x="157.25" y="365.0" />
+      <point x="29.0" y="14.5" />
+    </edge>
+    <edge source="org.machgo.procent.Wall" target="org.machgo.procent.MoveableSprite">
+      <point x="0.0" y="-14.5" />
+      <point x="320.0" y="59.0" />
+      <point x="262.9" y="59.0" />
+      <point x="25.399999999999977" y="14.5" />
+    </edge>
+    <edge source="org.machgo.procent.Bullet" target="org.machgo.procent.MoveableSprite">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.machgo.procent.ItemDrop" target="org.machgo.procent.MoveableSprite">
+      <point x="0.0" y="-14.5" />
+      <point x="138.5" y="59.0" />
+      <point x="212.1" y="59.0" />
+      <point x="-25.400000000000006" y="14.5" />
+    </edge>
+    <edge source="org.machgo.procent.WeaponRocket" target="org.machgo.procent.WeaponPistol">
+      <point x="0.0" y="-14.5" />
+      <point x="62.0" y="365.0" />
+      <point x="99.25" y="365.0" />
+      <point x="-29.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9028960817717206" x="248.61320754716974" y="283.5" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+

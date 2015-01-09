@@ -2,7 +2,6 @@ package org.machgo.procent;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -212,21 +211,40 @@ public class Game extends JPanel implements Runnable, KeyListener
             _walls.add(new Wall(i+20, this.getHeight()-20, 40, 40));
         }
 
+
 //        _walls.add(new Wall(340,300,40,40));
 //        _walls.add(new Wall(600,300,40,40));
 //        _walls.add(new Wall(840,300,40,40));
 
 
-        Enemy boss = new Boss(300, 300, 128, 128, _activeRound);
-        boss.setHealth(30);
-        _enemies.add(boss);
-        for (int i = 100; i < 601; i = i + 80)
+        switch (_activeRound)
         {
-            Enemy e1 = new Enemy(i, 300, 128, 128, _activeRound);
+            case 1:
+                for (int i = 150; i < 950; i = i + 200)
+                {
+                    Enemy e1 = new Enemy(i, 200, 128, 128, 1);
 
-            e1.setHealth(2);
-            _enemies.add(e1);
+                    e1.setHealth(20);
+                    _enemies.add(e1);
+                }
+                break;
+
+            case 2:
+                for (int i = 150; i < 950; i = i + 150)
+                {
+                    Enemy e1 = new Enemy(i, 150, 128, 128, 2);
+
+                    e1.setHealth(30);
+                    _enemies.add(e1);
+                }
+                break;
+            case 3:
+                Enemy boss = new Boss(150, 150, 128, 128, 2);
+                boss.setHealth(1000);
+                _enemies.add(boss);
+                break;
         }
+
 
         _gameState = GameState.MAINGAME_STATE;
         _player = _shop.getBoostedPlayer();
@@ -259,6 +277,8 @@ public class Game extends JPanel implements Runnable, KeyListener
 
         Font font = new Font("Monospaced.plain", Font.PLAIN, 30);
         g2d.setColor(Color.WHITE);
+        if (_gameState != GameState.MAINGAME_STATE)
+            g2d.setColor(Color.BLACK);
         g2d.setFont(font);
         g2d.drawString(Integer.toString(_player.get_money()) + "$", this.getWidth()-100, 30);
 
@@ -288,31 +308,31 @@ public class Game extends JPanel implements Runnable, KeyListener
 
         if (_gameState == GameState.TITLE_STATE)
         {
-            Font font = new Font("Serif", Font.PLAIN, 40);
+            Font font = new Font("Consolas", Font.PLAIN, 40);
             g2d.setFont(font);
-            g2d.drawString("TITLE SCREEN", 100, 100);
+            g2d.drawString("PROCENT - TITLE SCREEN", 400, 300);
         }
 
         if (_gameState == GameState.PAUSEGAME_STATE)
         {
-            Font font = new Font("Serif", Font.PLAIN, 40);
+            Font font = new Font("Consolas", Font.PLAIN, 40);
             g2d.setFont(font);
-            g2d.drawString("PAUSE", 100, 100);
+            g2d.drawString("PAUSE", 400, 300);
             drawHUD(g2d);
         }
 
         if (_gameState == GameState.GAMEOVER_STATE)
         {
-            Font font = new Font("Serif", Font.PLAIN, 40);
+            Font font = new Font("Consolar", Font.PLAIN, 80);
             g2d.setFont(font);
-            g2d.drawString("GAME OVER", 100, 100);
+            g2d.drawString("GAME OVER", 400, 300);
         }
 
         else if (_gameState == GameState.ROUNDSUMMARY_STATE)
         {
-            Font font = new Font("Serif", Font.PLAIN, 40);
+            Font font = new Font("Consolas", Font.PLAIN, 40);
             g2d.setFont(font);
-            g2d.drawString("End Of Round " + Integer.toString(_activeRound), 100, 100);
+            g2d.drawString("End Of Round " + Integer.toString(_activeRound), 300, 100);
             drawHUD(g2d);
             _shop.draw(g2d);
         }
@@ -330,6 +350,12 @@ public class Game extends JPanel implements Runnable, KeyListener
                 }
             }
 
+            for (ItemDrop drop : _drops)
+            {
+                if (!drop.isTaken())
+                    drop.draw(g2d);
+            }
+
             for (Enemy enemy : _enemies)
             {
                 if (enemy.isAlive())
@@ -343,11 +369,7 @@ public class Game extends JPanel implements Runnable, KeyListener
                 wall.draw(g2d);
             }
 
-            for (ItemDrop drop : _drops)
-            {
-                if (!drop.isTaken())
-                    drop.draw(g2d);
-            }
+
             drawHUD(g2d);
 
         }

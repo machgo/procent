@@ -41,7 +41,7 @@ public class Player extends MoveableSprite
         this._sinceLastShoot = this._shootingCooldown; //for instant first shot
         this._movingDirection = Direction.DOWN;
         this._shootingDirection = Direction.DOWN;
-        this._money = 999;
+        this._money = 0;
         this._weapon = new WeaponPistol();
     }
 

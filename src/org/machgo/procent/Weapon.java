@@ -18,3 +18,4 @@ public interface Weapon
     public void drawItem(Graphics2D g2d, int x, int y);
 
 }
+
